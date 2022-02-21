@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">fortnite</string>
+    <string name="title_home">Início</string>
+    <string name="title_dashboard">Loja</string>
+    <string name="title_notifications">Notícias</string>
+
+    <string name="init">Início</string>
+    <string name="shop">Loja</string>
+    <string name="news">Notícias</string>
+    <string name="nick">Nick</string>
+    <string name="fortnaticos">Fortnáticos</string>
+
+</resources>
