@@ -8,7 +8,7 @@ com as recomendações do ```Android Jetpack ```
 ## Link Play Store
 https://play.google.com/store/apps/details?id=com.wolking.fortnite
 
-## Images App
+## Imagens do aplicativo
 
 <p float="left">
 <img src="https://github.com/paulowolking/fortnite-android/blob/master/app/imagesApp/Screenshot_1645455028.png" width="200" height="400" />
