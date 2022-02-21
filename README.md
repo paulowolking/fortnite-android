@@ -5,6 +5,9 @@ Este é um repositório que tento atualizar conforme a plataforma Android insere
 aos poucos vou atualizando a arquitetura e o uso de bibliotecas e formas de fazer as visualizações de acordo
 com as recomendações do ```Android Jetpack ```
 
+## Link Play Store
+https://play.google.com/store/apps/details?id=com.wolking.fortnite
+
 ## Images App
 
 <p float="left">
