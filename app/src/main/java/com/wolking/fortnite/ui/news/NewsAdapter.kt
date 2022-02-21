@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.model.Entries
-import com.wolking.fortnite.data.model.Motd
+import com.wolking.fortnite.data.models.news.model.Motd
 import kotlinx.android.synthetic.main.adapter_grid_item.view.imageviewFoto
 import kotlinx.android.synthetic.main.adapter_grid_item.view.tv_name
 import kotlinx.android.synthetic.main.adapter_news.view.*

@@ -8,23 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.dimenuto.aboa.data.cache.AppPreferences
-import com.wolking.fortnite.MainActivity
 import com.wolking.fortnite.NickActivity
 import com.wolking.fortnite.R
 import com.wolking.fortnite.presentation.Resource
+import com.wolking.fortnite.presentation.cache.AppPreferences
 import com.wolking.fortnite.presentation.viewmodels.HomeViewModel
 import com.wolking.fortnite.ui.home.adapters.SimpleFragmentPagerAdapter
 import com.wolking.fortnite.util.load
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.progress_bar.*
-import org.jetbrains.anko.intentFor
-import org.koin.android.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
 
     override fun onCreateView(

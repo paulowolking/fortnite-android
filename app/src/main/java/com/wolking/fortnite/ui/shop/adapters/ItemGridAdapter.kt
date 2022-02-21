@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.model.Entries
+import com.wolking.fortnite.data.models.shop.model.Entries
 import kotlinx.android.synthetic.main.adapter_grid_item.view.*
 
 

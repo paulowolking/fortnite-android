@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.model.Stats
+import com.wolking.fortnite.data.models.stats.model.Stats
 import kotlinx.android.synthetic.main.adapter_stats_fragment.*
 
 class StatsTypeFragment(private val data: Stats?, private val title: String?) : Fragment() {
