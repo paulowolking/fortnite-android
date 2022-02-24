@@ -6,8 +6,13 @@ import android.preference.PreferenceManager
 import androidx.multidex.BuildConfig
 import com.wolking.fortnite.data.remote.util.ApiInterceptor
 import com.google.gson.GsonBuilder
-import com.wolking.fortnite.data.AppRepository
+import com.wolking.fortnite.data.models.news.repository.NewsRepositoryImpl
+import com.wolking.fortnite.data.models.shop.repository.ShopRepositoryImpl
+import com.wolking.fortnite.data.models.stats.repository.StatsRepositoryImpl
 import com.wolking.fortnite.data.remote.service.ApiService
+import com.wolking.fortnite.domain.news.repository.NewsRepository
+import com.wolking.fortnite.domain.shop.repository.ShopRepository
+import com.wolking.fortnite.domain.stats.repository.StatsRepository
 import com.wolking.fortnite.utils.BooleanTypeAdapter
 import com.wolking.fortnite.utils.DateTypeAdapter
 import dagger.Module
@@ -81,6 +86,15 @@ object NetworkModule {
         retrofit.create(ApiService::class.java)
 
     @Provides
-    fun providesAppRepository(apiService: ApiService): AppRepository = AppRepository(apiService)
+    fun providesNewsRepository(apiService: ApiService): NewsRepository =
+        NewsRepositoryImpl(apiService)
+
+    @Provides
+    fun providesShopRepository(apiService: ApiService): ShopRepository =
+        ShopRepositoryImpl(apiService)
+
+    @Provides
+    fun providesStatsRepository(apiService: ApiService): StatsRepository =
+        StatsRepositoryImpl(apiService)
 
 }
