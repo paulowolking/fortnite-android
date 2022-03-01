@@ -11,29 +11,29 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.wolking.fortnite.presentation.cache.AppPreferences
-import com.wolking.fortnite.NickActivity
+import com.wolking.fortnite.presentation.ui.NickActivity
 import com.wolking.fortnite.R
+import com.wolking.fortnite.databinding.FragmentHomeBinding
 import com.wolking.fortnite.presentation.Resource
 import com.wolking.fortnite.presentation.viewmodels.HomeViewModel
 import com.wolking.fortnite.presentation.ui.home.adapters.SimpleFragmentPagerAdapter
 import com.wolking.fortnite.utils.load
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.progress_bar.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var fragmentPagerAdapter: SimpleFragmentPagerAdapter
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        return root
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,14 +42,14 @@ class HomeFragment : Fragment() {
         registerObservers()
     }
 
-    fun setupView() {
-        iv_photo.load(
+    private fun setupView() {
+        binding.ivPhoto.load(
             url = "https://robohash.org/${(0..100).random()}.png",
             circleCrop = true,
             errorImage = R.drawable.ic_launcher_background
         )
 
-        bt_edit.setOnClickListener {
+        binding.btEdit.setOnClickListener {
             requireContext().startActivity(Intent(activity, NickActivity::class.java))
         }
     }
@@ -61,23 +61,25 @@ class HomeFragment : Fragment() {
         homeViewModel.stats.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Loading -> {
-                    progress.isVisible = true
+                    binding.progressBar.progress.isVisible = true
                 }
                 is Resource.Success -> {
-                    progress.isVisible = false
+                    binding.progressBar.progress.isVisible = false
 
                     if (it.data.data?.battlePass != null) {
-                        fl_battle_pass.isVisible = true
-                        tv_battle_pass.text = it.data.data?.battlePass?.level
+                        binding.flBattlePass.isVisible = true
+                        binding.tvBattlePass.text = it.data.data?.battlePass?.level
                     }
 
-                    tv_name.text = it.data.data?.account?.name
-                    tv_wins.text = it.data.data?.stats?.all?.overall?.wins?.toInt().toString()
-                    tv_kd.text = it.data.data?.stats?.all?.overall?.kd.toString()
-                    tv_kills.text = it.data.data?.stats?.all?.overall?.kills?.toInt().toString()
+                    binding.tvName.text = it.data.data?.account?.name
+                    binding.tvWins.text =
+                        it.data.data?.stats?.all?.overall?.wins?.toInt().toString()
+                    binding.tvKd.text = it.data.data?.stats?.all?.overall?.kd.toString()
+                    binding.tvKills.text =
+                        it.data.data?.stats?.all?.overall?.kills?.toInt().toString()
 
                     activity?.let { activity ->
-                        viewpager?.let { viewPager ->
+                        binding.viewpager.let { viewPager ->
                             fragmentPagerAdapter =
                                 SimpleFragmentPagerAdapter(viewPager.context, childFragmentManager)
                             fragmentPagerAdapter.addFragment(
@@ -99,12 +101,12 @@ class HomeFragment : Fragment() {
                                 "Squad"
                             )
                             viewPager.adapter = fragmentPagerAdapter
-                            tab?.setupWithViewPager(viewpager)
+                            binding.tab.setupWithViewPager(binding.viewpager)
                         }
                     }
                 }
                 is Resource.Failure -> {
-                    progress.isVisible = false
+                    binding.progressBar.progress.isVisible = false
                     Log.e("Erro:", it.throwable.toString())
                 }
             }

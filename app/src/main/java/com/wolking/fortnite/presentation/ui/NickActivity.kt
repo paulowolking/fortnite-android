@@ -1,30 +1,33 @@
-package com.wolking.fortnite
+package com.wolking.fortnite.presentation.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.wolking.fortnite.R
+import com.wolking.fortnite.databinding.ActivityNickBinding
 import com.wolking.fortnite.presentation.cache.AppPreferences
 import com.wolking.fortnite.presentation.Resource
 import com.wolking.fortnite.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_nick.*
-import org.jetbrains.anko.intentFor
 
 @AndroidEntryPoint
 class NickActivity : AppCompatActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels()
+    private lateinit var binding: ActivityNickBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nick)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_nick)
 
-        bt_search.setOnClickListener {
-            val nick = et_nick.text.toString()
+        binding.btSearch.setOnClickListener {
+            val nick = binding.etNick.text.toString()
             if (TextUtils.isEmpty(nick)) {
                 Toast.makeText(this, "Digita teu nick", Toast.LENGTH_SHORT).show()
             } else {
@@ -42,7 +45,7 @@ class NickActivity : AppCompatActivity() {
                     //
                 }
                 is Resource.Success -> {
-                    AppPreferences(this).setString("nick", et_nick.text.toString())
+                    AppPreferences(this).setString("nick", binding.etNick.text.toString())
                     goToMain()
                 }
                 is Resource.Failure -> {
@@ -54,7 +57,7 @@ class NickActivity : AppCompatActivity() {
     }
 
     private fun goToMain() {
-        startActivity(intentFor<MainActivity>())
+        startActivity(Intent(this, MainActivity::class.java))
         finishAffinity()
     }
 }

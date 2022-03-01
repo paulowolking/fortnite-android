@@ -1,16 +1,20 @@
-package com.wolking.fortnite
+package com.wolking.fortnite.presentation.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.wolking.fortnite.R
+import com.wolking.fortnite.databinding.ActivityWelcomeBinding
 import com.wolking.fortnite.presentation.cache.AppPreferences
 import com.wolking.fortnite.utils.runDelayed
-import org.jetbrains.anko.intentFor
 
 class WelcomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWelcomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome)
 
         runDelayed {
             val nick = AppPreferences(this).getString("nick", null)
@@ -24,12 +28,12 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun goToMain() {
-        startActivity(intentFor<MainActivity>())
+        startActivity(Intent(this, MainActivity::class.java))
         finishAffinity()
     }
 
     private fun goToNick() {
-        startActivity(intentFor<NickActivity>())
+        startActivity(Intent(this, NickActivity::class.java))
         finishAffinity()
     }
 }

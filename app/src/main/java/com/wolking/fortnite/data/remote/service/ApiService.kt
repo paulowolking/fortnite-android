@@ -24,4 +24,5 @@ interface ApiService {
     @GET("v2/news/br")
     fun getNews(
         @Query("language") name: String = "pt-BR"
-    ): Observable<Response<News>> }
+    ): Observable<Response<News>>
+}

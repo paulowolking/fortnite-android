@@ -12,6 +12,7 @@ import com.wolking.fortnite.data.models.news.model.Motd
 import kotlinx.android.synthetic.main.adapter_grid_item.view.imageviewFoto
 import kotlinx.android.synthetic.main.adapter_grid_item.view.tv_name
 import kotlinx.android.synthetic.main.adapter_news.view.*
+import okhttp3.internal.notify
 
 
 class NewsAdapter(

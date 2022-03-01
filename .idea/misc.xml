@@ -4,10 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/workspace/fortnite/app/src/main/res/layout/adapter_stats_fragment.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_nick.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/layout/adapter_stats_fragment.xml" value="0.19701086956521738" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.17119565217391305" />
+        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.19701086956521738" />
+        <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.19701086956521738" />
+        <entry key="app/src/main/res/layout/progress_bar.xml" value="0.19701086956521738" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
