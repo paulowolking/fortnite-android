@@ -38,7 +38,7 @@ class NewsFragment : Fragment() {
     }
 
     fun setupView() {
-        with(binding.rvItems) {
+        with(binding.rvNews) {
             layoutManager = LinearLayoutManager(context)
             adapter = NewsAdapter(context)
         }
@@ -55,7 +55,7 @@ class NewsFragment : Fragment() {
                 is Resource.Success -> {
                     binding.progressBar.progress.isVisible = false
                     it.data.data?.motds?.let { it1 ->
-                        (binding.rvItems.adapter as NewsAdapter)
+                        (binding.rvNews.adapter as NewsAdapter)
                             .updateItemsList(it1)
                     }
                 }

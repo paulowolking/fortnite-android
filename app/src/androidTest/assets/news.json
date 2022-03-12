@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "data": {
+    "hash": "7d110194f395e50074c9266c07133d53e35a4701",
+    "date": "2022-03-12T18:00:11Z",
+    "image": "https://cdn.fortnite-api.com/news/v2/7d110194f395e50074c9266c07133d53e35a4701.gif",
+    "motds": [
+      {
+        "id": "845f1ef0-4800-4839-8799-5e87cdfc4332",
+        "title": "Controles de Mira Giroscópica e Giro Rápido",
+        "tabTitle": "Mira Giroscópica e Giro Rápido",
+        "body": "Use a nova Mira Giroscópica para um controle mais preciso ou para mudar completamente como você aponta com o Giro Rápido! Assista ao vídeo para saber mais ou confira fn.gg/GyroControls",
+        "image": "https://cdn-live.prm.ol.epicgames.com/prod/db870174e25cc6fbdbae41f6862a904350a87b0a95ed3c8c545150d33695153f4f9e4014c895836eabf34740905735a6-c0093f63-e96a-4c69-999d-63e409ec795f.jpeg?width=1920",
+        "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/db870174e25cc6fbdbae41f6862a9043824de90af2749da3e6ccb5942ec9b9db5a77edb9645e6a03dcec55930845a34b-64473c1d-ca44-40c1-9078-0f10de69624a.jpeg?width=1024",
+        "sortingPriority": 100,
+        "hidden": false,
+        "videoString": "Gyro_Controls",
+        "videoId": "GtCrAAMAHQGWBTkyjl"
+      },
+      {
+        "id": "422f95aa-5c06-4824-9cf7-7b7370c1823f",
+        "title": "Tela de Seleção de Modo Removida",
+        "tabTitle": "Informações do Patch",
+        "body": "Com a remoção da tela de Seleção de Modo, você agora entra direto no Lobby, pronto para formar seu grupo e explorar o Fortnite!",
+        "image": "https://cdn-live.prm.ol.epicgames.com/prod/85b003454eb8ef6356eec2a5cfc7d02f1080aa24a73b2eabf0aa111cce87054f8e32f07cf66664b9f0690950fabf628b-653fc222-82f0-4947-9af0-3e6c746dd4c1.png?width=1920",
+        "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/85b003454eb8ef6356eec2a5cfc7d02fbcd3a2b14ab8beb9e193952229644b8b5370f36ffd77b3f11f6e996ac79e7273-50cb9ccb-834c-427a-88a2-7829de854e66.png?width=1024",
+        "sortingPriority": 90,
+        "hidden": false
+      },
+      {
+        "id": "c735d668-88d9-4eee-a76b-b2a8f42e6dbd",
+        "title": "Final da Loucura Criativa",
+        "tabTitle": null,
+        "body": "As melhores equipes da Loucura Criativa estão prontas para mostrar suas habilidades ao mundo! Acompanhe a Final da Loucura Criativa em fn.gg/Mayhem",
+        "image": "https://cdn-live.prm.ol.epicgames.com/prod/8697f6ba6e16be02bfaab70f2aa7a2b117a6ea333fb22b4e7e2d492d1af1f6f2-d9c3db97-e489-4bd9-9f39-af893d6e5fe1.jpeg?width=1920",
+        "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/8856dd373fdb72a6f9d13c9ef7996f81aa949a93d94e732d3cf168467380ba3b-57b40290-b190-48bd-bb0d-22e82767e820.jpeg?width=1024",
+        "sortingPriority": 80,
+        "hidden": false
+      },
+      {
+        "id": "d75d7b63-5b9c-4fc8-8d82-507a737c3aaf",
+        "title": "Novas Tarefas de Ascensão",
+        "tabTitle": "Novas Tarefas de Ascensão",
+        "body": "Novas Tarefas adicionadas. Avance no Passe de Batalha para obter recompensas extras. Encare as Tarefas de Ascensão para ganhar níveis do Passe de Batalha e recompensas adicionais por tarefas",
+        "image": "https://cdn-live.prm.ol.epicgames.com/prod/47fb5f3608dd069c282b47567ba510c072dcd938e230bc08d5450ebff242a424a27e8ae763ef7a00f883b44da8d17edb-5b742f00-b408-4d7f-921c-688f6b2d547d.jpeg?width=1920",
+        "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/47fb5f3608dd069c282b47567ba510c025c0623ee5dcd6cb1ed8b990c6e089297f7ee385a7280356ba0240e75d542a71-2fda5f63-1a41-4ab6-bcb0-7e2af0c64732.jpeg?width=1024",
+        "sortingPriority": 70,
+        "hidden": false
+      }
+    ],
+    "messages": null
+  }
+}

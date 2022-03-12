@@ -42,7 +42,7 @@ class ShopFragment : Fragment(), ItemAdapterListener {
     }
 
     fun setupView() {
-        with(binding.rvItems) {
+        with(binding.rvShop) {
             layoutManager = GridLayoutManager(context, 2)
             addItemDecoration(SpacingItemDecoration(2, Tools.dpToPx(context, 2), false))
             adapter = ItemGridAdapter(context, this@ShopFragment)
@@ -71,7 +71,7 @@ class ShopFragment : Fragment(), ItemAdapterListener {
                     it.data.data?.specialFeatured?.entries?.let {
                         entries.addAll(it)
                     }
-                    (binding.rvItems.adapter as ItemGridAdapter)
+                    (binding.rvShop.adapter as ItemGridAdapter)
                         .updateItemsList(entries)
                 }
                 is Resource.Failure -> {
