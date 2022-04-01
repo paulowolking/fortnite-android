@@ -59,9 +59,9 @@ class NewsFragment : Fragment() {
                             .updateItemsList(it1)
                     }
                 }
-                is Resource.Failure -> {
+                is Resource.Error -> {
                     binding.progressBar.progress.isVisible = false
-                    Log.e("Erro:", it.throwable.toString())
+                    Log.e("Erro:", it.toString())
                 }
             }
         })

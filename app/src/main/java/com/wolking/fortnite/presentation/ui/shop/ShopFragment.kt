@@ -74,9 +74,9 @@ class ShopFragment : Fragment(), ItemAdapterListener {
                     (binding.rvShop.adapter as ItemGridAdapter)
                         .updateItemsList(entries)
                 }
-                is Resource.Failure -> {
+                is Resource.Error -> {
                     binding.progressBar.progress.isVisible = false
-                    Log.e("Erro:", it.throwable.toString())
+                    Log.e("Erro:", it.toString())
                 }
             }
         })

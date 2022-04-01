@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
 
     private fun registerObservers() {
         val nick = AppPreferences(requireContext()).getString("nick", null)
-        homeViewModel.getStats(true, nick ?: "")
+        homeViewModel.getStats(nick ?: "")
 
         homeViewModel.stats.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -105,9 +105,9 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
-                is Resource.Failure -> {
+                is Resource.Error -> {
                     binding.progressBar.progress.isVisible = false
-                    Log.e("Erro:", it.throwable.toString())
+                    Log.e("Erro:", it.toString())
                 }
             }
         })

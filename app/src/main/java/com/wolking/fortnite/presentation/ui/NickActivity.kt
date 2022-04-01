@@ -41,7 +41,7 @@ class NickActivity : AppCompatActivity() {
     }
 
     private fun search(nick: String) {
-        homeViewModel.getStats(true, nick)
+        homeViewModel.getStats(nick)
 
         homeViewModel.stats.observe(this, Observer {
             when (it) {
@@ -52,9 +52,9 @@ class NickActivity : AppCompatActivity() {
                     AppPreferences(this).setString("nick", binding.etNick.text.toString())
                     goToMain()
                 }
-                is Resource.Failure -> {
+                is Resource.Error -> {
                     Toast.makeText(this, "Hum..., não encontrei você.", Toast.LENGTH_SHORT).show()
-                    Log.e("Erro:", it.throwable.toString())
+                    Log.e("Erro:", it.toString())
                 }
             }
         })
