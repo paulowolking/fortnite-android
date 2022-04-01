@@ -15,11 +15,12 @@ https://play.google.com/store/apps/details?id=com.wolking.fortnite
 ♻️ Injeção de dependência com Hilt ```https://developer.android.com/training/dependency-injection/hilt-android``` <br/>
 ♻️ Data Binding ```https://developer.android.com/topic/libraries/data-binding``` <br/>
 ♻️ Refatoração da arquitetura<br/>
+♻️ Testes instrumentados<br/>
 ♻️ Corrotinas ```https://developer.android.com/kotlin/coroutines```<br/>
 
 ## Melhorias futuras
 ✅ Colocar as visualizações em compose ```https://developer.android.com/jetpack/compose```<br/>
-✅ Implementar testes<br/>
+✅ Implementar testes unitários<br/>
 ✔️ Talvez colocar uma camada de ```usecases``` para ser utilizado pelo ```repository```, para com isso ficar melhor de implementar os testes unitários.<br/>
 
 ## Imagens do aplicativo
