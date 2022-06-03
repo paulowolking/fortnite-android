@@ -1,7 +1,6 @@
 package com.wolking.fortnite.presentation.ui.news
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wolking.fortnite.databinding.FragmentNewsBinding
-import com.wolking.fortnite.presentation.Resource
-import com.wolking.fortnite.presentation.viewmodels.NewsViewModel
+import com.wolking.fortnite.presentation.ui.news.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +35,7 @@ class NewsFragment : Fragment() {
         registerObservers()
     }
 
-    fun setupView() {
+    private fun setupView() {
         with(binding.rvNews) {
             layoutManager = LinearLayoutManager(context)
             adapter = NewsAdapter(context)
@@ -48,22 +46,12 @@ class NewsFragment : Fragment() {
         newsViewModel.getNews()
 
         newsViewModel.news.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Loading -> {
-                    binding.progressBar.progress.isVisible = true
-                }
-                is Resource.Success -> {
-                    binding.progressBar.progress.isVisible = false
-                    it.data.data?.motds?.let { it1 ->
-                        (binding.rvNews.adapter as NewsAdapter)
-                            .updateItemsList(it1)
-                    }
-                }
-                is Resource.Error -> {
-                    binding.progressBar.progress.isVisible = false
-                    Log.e("Erro:", it.toString())
-                }
-            }
+            (binding.rvNews.adapter as NewsAdapter)
+                .updateItemsList(it)
         })
+
+        newsViewModel.loading.observe(viewLifecycleOwner) {
+            binding.progressBar.progress.isVisible = it
+        }
     }
 }

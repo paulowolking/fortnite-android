@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.models.shop.model.Entries
+import com.wolking.fortnite.data.shop.data_source.EntriesDto
 import kotlinx.android.synthetic.main.adapter_grid_item.view.*
 
 
 class ItemGridAdapter(
     private var context: Context,
-    private var shopList: MutableList<Entries> = mutableListOf(),
+    private var shopList: MutableList<EntriesDto> = mutableListOf(),
     private val listener: ItemAdapterListener
 ) : RecyclerView.Adapter<ItemGridAdapter.ViewHolder>() {
 
     constructor(
         context: Context, listener: ItemAdapterListener
     ) : this(
-        context, mutableListOf<Entries>(), listener = listener
+        context, mutableListOf<EntriesDto>(), listener = listener
     )
 
-    fun updateItemsList(items: List<Entries>) {
+    fun updateItemsList(items: List<EntriesDto>) {
         this.shopList.clear()
         this.shopList.addAll(items)
         notifyDataSetChanged()
@@ -39,15 +39,18 @@ class ItemGridAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val entrie = shopList[position]
 
-        val url =
-            if (entrie.items[0].images?.featured != null) entrie.items[0].images?.featured else entrie.items[0].images?.icon
+        if (entrie.items.isNotEmpty()) {
+            val url =
+                if (entrie.items[0].images?.featured != null) entrie.items[0].images?.featured else entrie.items[0].images?.icon
 
-        Glide.with(context)
-            .load(url)
-            .apply(RequestOptions().centerInside())
-            .into(holder.itemView.imageviewFoto)
+            Glide.with(context)
+                .load(url)
+                .apply(RequestOptions().centerInside())
+                .into(holder.itemView.imageviewFoto)
 
-        holder.itemView.tv_name.text = entrie.items[0].name
+            holder.itemView.tv_name.text = entrie.items[0].name
+        }
+
         holder.itemView.tv_value.text = entrie.finalPrice.toString()
     }
 

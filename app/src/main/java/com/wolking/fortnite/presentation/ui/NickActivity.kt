@@ -3,8 +3,6 @@ package com.wolking.fortnite.presentation.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
@@ -14,8 +12,8 @@ import androidx.lifecycle.Observer
 import com.wolking.fortnite.R
 import com.wolking.fortnite.databinding.ActivityNickBinding
 import com.wolking.fortnite.presentation.cache.AppPreferences
-import com.wolking.fortnite.presentation.Resource
-import com.wolking.fortnite.presentation.viewmodels.HomeViewModel
+import com.wolking.fortnite.data.core.Resource
+import com.wolking.fortnite.presentation.ui.home.viewmodel.HomeViewModel
 import com.wolking.fortnite.utils.CountingIdlingResourceSingleton
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,21 +41,14 @@ class NickActivity : AppCompatActivity() {
     private fun search(nick: String) {
         homeViewModel.getStats(nick)
 
-        homeViewModel.stats.observe(this, Observer {
-            when (it) {
-                is Resource.Loading -> {
-                    //
-                }
-                is Resource.Success -> {
-                    AppPreferences(this).setString("nick", binding.etNick.text.toString())
-                    goToMain()
-                }
-                is Resource.Error -> {
-                    Toast.makeText(this, "Hum..., não encontrei você.", Toast.LENGTH_SHORT).show()
-                    Log.e("Erro:", it.toString())
-                }
-            }
-        })
+        homeViewModel.statsDto.observe(this) {
+            AppPreferences(this).setString("nick", binding.etNick.text.toString())
+            goToMain()
+        }
+
+        homeViewModel.error.observe(this) {
+            Toast.makeText(this, "Hum..., não encontrei você.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun goToMain() {

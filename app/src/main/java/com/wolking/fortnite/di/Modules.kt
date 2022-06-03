@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.multidex.BuildConfig
-import com.wolking.fortnite.data.remote.util.ApiInterceptor
+import androidx.room.Room
+import com.wolking.fortnite.data.core.util.ApiInterceptor
 import com.google.gson.GsonBuilder
-import com.wolking.fortnite.data.models.news.repository.NewsRepositoryImpl
-import com.wolking.fortnite.data.models.shop.repository.ShopRepositoryImpl
-import com.wolking.fortnite.data.models.stats.repository.StatsRepositoryImpl
-import com.wolking.fortnite.data.remote.service.ApiService
+import com.wolking.fortnite.data.database.AppDatabase
+import com.wolking.fortnite.data.database.models.friends.repository.FriendRepositoryImpl
+import com.wolking.fortnite.data.news.repository.NewsRepositoryImpl
+import com.wolking.fortnite.data.shop.repository.ShopRepositoryImpl
+import com.wolking.fortnite.data.stats.repository.StatsRepositoryImpl
+import com.wolking.fortnite.data.core.service.ApiService
+import com.wolking.fortnite.domain.friends.repository.FriendsRepository
 import com.wolking.fortnite.domain.news.repository.NewsRepository
 import com.wolking.fortnite.domain.shop.repository.ShopRepository
 import com.wolking.fortnite.domain.stats.repository.StatsRepository
@@ -23,7 +27,6 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -95,5 +98,20 @@ object NetworkModule {
     @Provides
     fun providesStatsRepository(apiService: ApiService): StatsRepository =
         StatsRepositoryImpl(apiService)
+
+    @Singleton
+    @Provides
+    fun providesAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return Room.databaseBuilder(
+            appContext,
+            AppDatabase::class.java,
+            "fortinaticos"
+        ).fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    fun providesFriendsRepository(appDatabase: AppDatabase): FriendsRepository =
+        FriendRepositoryImpl(appDatabase)
 
 }

@@ -22,4 +22,10 @@
         android:name="com.wolking.fortnite.presentation.ui.news.NewsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/navigation_friends"
+        android:name="com.wolking.fortnite.presentation.ui.friends.FriendsFragment"
+        android:label="@string/title_friends"
+        tools:layout="@layout/fragment_friends" />
 </navigation>

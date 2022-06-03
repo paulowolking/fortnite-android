@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.wolking.fortnite.data.models.stats.model.Stats
+import com.wolking.fortnite.data.stats.data_source.StatsDto
 import com.wolking.fortnite.databinding.AdapterStatsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StatsTypeFragment(private val data: Stats?, private val title: String?) : Fragment() {
+class StatsTypeFragment(private val data: StatsDto?, private val title: String?) : Fragment() {
     private lateinit var binding: AdapterStatsFragmentBinding
 
     override fun onCreateView(

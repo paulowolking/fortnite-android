@@ -3,15 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/workspace/fortnite/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.119" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/drawable/ic_launcher_background.xml" value="0.119" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/drawable/ic_news.xml" value="0.4036458333333333" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/drawable/shape_circle_primary.xml" value="0.3828125" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/activity_main.xml" value="0.32563405797101447" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/activity_nick.xml" value="0.17552083333333332" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/adapter_grid_item.xml" value="0.358695652173913" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/adapter_news.xml" value="0.358695652173913" />
         <entry key="..\:/workspace/fortnite/app/src/main/res/layout/adapter_stats_fragment.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_nick.xml" value="0.1816123188405797" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.1816123188405797" />
-        <entry key="app/src/main/res/layout/adapter_stats_fragment.xml" value="0.19701086956521738" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.17119565217391305" />
-        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.19701086956521738" />
-        <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.19701086956521738" />
-        <entry key="app/src/main/res/layout/progress_bar.xml" value="0.19701086956521738" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/fragment_friends.xml" value="0.23278985507246377" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/fragment_home.xml" value="0.12681159420289856" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/fragment_news.xml" value="0.3401268115942029" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/fragment_shop.xml" value="0.17552083333333332" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/progress_bar.xml" value="0.358695652173913" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/layout/toolbar.xml" value="0.32563405797101447" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.119" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.119" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.119" />
+        <entry key="..\:/workspace/fortnite/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.119" />
       </map>
     </option>
   </component>

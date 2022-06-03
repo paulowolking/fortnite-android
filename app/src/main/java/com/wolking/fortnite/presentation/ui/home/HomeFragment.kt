@@ -2,20 +2,17 @@ package com.wolking.fortnite.presentation.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.wolking.fortnite.presentation.cache.AppPreferences
 import com.wolking.fortnite.presentation.ui.NickActivity
 import com.wolking.fortnite.R
 import com.wolking.fortnite.databinding.FragmentHomeBinding
-import com.wolking.fortnite.presentation.Resource
-import com.wolking.fortnite.presentation.viewmodels.HomeViewModel
+import com.wolking.fortnite.presentation.ui.home.viewmodel.HomeViewModel
 import com.wolking.fortnite.presentation.ui.home.adapters.SimpleFragmentPagerAdapter
 import com.wolking.fortnite.utils.load
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,59 +54,51 @@ class HomeFragment : Fragment() {
     private fun registerObservers() {
         val nick = AppPreferences(requireContext()).getString("nick", null)
         homeViewModel.getStats(nick ?: "")
+        homeViewModel.statsDto.observe(viewLifecycleOwner) {
+            binding.progressBar.progress.isVisible = false
 
-        homeViewModel.stats.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Loading -> {
-                    binding.progressBar.progress.isVisible = true
-                }
-                is Resource.Success -> {
-                    binding.progressBar.progress.isVisible = false
+            if (it.battlePass != null) {
+                binding.flBattlePass.isVisible = true
+                binding.tvBattlePass.text = it.battlePass?.level
+            }
 
-                    if (it.data.data?.battlePass != null) {
-                        binding.flBattlePass.isVisible = true
-                        binding.tvBattlePass.text = it.data.data?.battlePass?.level
-                    }
+            binding.tvName.text = it.account?.name
+            binding.tvWins.text =
+                it.stats?.all?.overall?.wins?.toInt().toString()
+            binding.tvKd.text = it.stats?.all?.overall?.kd.toString()
+            binding.tvKills.text =
+                it.stats?.all?.overall?.kills?.toInt().toString()
 
-                    binding.tvName.text = it.data.data?.account?.name
-                    binding.tvWins.text =
-                        it.data.data?.stats?.all?.overall?.wins?.toInt().toString()
-                    binding.tvKd.text = it.data.data?.stats?.all?.overall?.kd.toString()
-                    binding.tvKills.text =
-                        it.data.data?.stats?.all?.overall?.kills?.toInt().toString()
-
-                    activity?.let { activity ->
-                        binding.viewpager.let { viewPager ->
-                            fragmentPagerAdapter =
-                                SimpleFragmentPagerAdapter(viewPager.context, childFragmentManager)
-                            fragmentPagerAdapter.addFragment(
-                                StatsTypeFragment(
-                                    it.data.data,
-                                    "solo"
-                                ), "Solo"
-                            )
-                            fragmentPagerAdapter.addFragment(
-                                StatsTypeFragment(it.data.data, "duo"),
-                                "Duo"
-                            )
-                            fragmentPagerAdapter.addFragment(
-                                StatsTypeFragment(it.data.data, "trio"),
-                                "Trio"
-                            )
-                            fragmentPagerAdapter.addFragment(
-                                StatsTypeFragment(it.data.data, "squad"),
-                                "Squad"
-                            )
-                            viewPager.adapter = fragmentPagerAdapter
-                            binding.tab.setupWithViewPager(binding.viewpager)
-                        }
-                    }
-                }
-                is Resource.Error -> {
-                    binding.progressBar.progress.isVisible = false
-                    Log.e("Erro:", it.toString())
+            activity?.let { _ ->
+                binding.viewpager.let { viewPager ->
+                    fragmentPagerAdapter =
+                        SimpleFragmentPagerAdapter(viewPager.context, childFragmentManager)
+                    fragmentPagerAdapter.addFragment(
+                        StatsTypeFragment(
+                            it,
+                            "solo"
+                        ), "Solo"
+                    )
+                    fragmentPagerAdapter.addFragment(
+                        StatsTypeFragment(it, "duo"),
+                        "Duo"
+                    )
+                    fragmentPagerAdapter.addFragment(
+                        StatsTypeFragment(it, "trio"),
+                        "Trio"
+                    )
+                    fragmentPagerAdapter.addFragment(
+                        StatsTypeFragment(it, "squad"),
+                        "Squad"
+                    )
+                    viewPager.adapter = fragmentPagerAdapter
+                    binding.tab.setupWithViewPager(binding.viewpager)
                 }
             }
-        })
+        }
+
+        homeViewModel.loading.observe(viewLifecycleOwner) {
+            binding.progressBar.progress.isVisible = it
+        }
     }
 }

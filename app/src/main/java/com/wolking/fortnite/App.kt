@@ -12,21 +12,4 @@ class App : Application() {
         super.attachBaseContext(base)
         MultiDex.install(this)
     }
-
-    override fun onCreate() {
-        super.onCreate()
-//        injectKoin()
-    }
-
-//    private fun injectKoin() {
-//        startKoin {
-//            androidContext(this@App)
-//            androidLogger()
-//            modules(modulesList)
-//        }
-//    }
-
-    companion object {
-        val APP_PATH = "${Environment.getExternalStorageDirectory()}/fortnite"
-    }
 }

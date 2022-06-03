@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_news"
         android:title="@string/news" />
 
+    <item
+        android:id="@+id/navigation_friends"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/friiends" />
+
 </menu>
