@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.shop.data_source.EntriesDto
+import com.wolking.fortnite.domain.shop.model.Shop
 import kotlinx.android.synthetic.main.adapter_grid_item.view.*
 
 
 class ItemGridAdapter(
     private var context: Context,
-    private var shopList: MutableList<EntriesDto> = mutableListOf(),
+    private var shopList: MutableList<Shop> = mutableListOf(),
     private val listener: ItemAdapterListener
 ) : RecyclerView.Adapter<ItemGridAdapter.ViewHolder>() {
 
     constructor(
         context: Context, listener: ItemAdapterListener
     ) : this(
-        context, mutableListOf<EntriesDto>(), listener = listener
+        context, mutableListOf<Shop>(), listener = listener
     )
 
-    fun updateItemsList(items: List<EntriesDto>) {
+    fun updateItemsList(items: List<Shop>) {
         this.shopList.clear()
         this.shopList.addAll(items)
         notifyDataSetChanged()
@@ -37,21 +37,15 @@ class ItemGridAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val entrie = shopList[position]
+        val itemShop = shopList[position]
 
-        if (entrie.items.isNotEmpty()) {
-            val url =
-                if (entrie.items[0].images?.featured != null) entrie.items[0].images?.featured else entrie.items[0].images?.icon
+        Glide.with(context)
+            .load(itemShop.photoUrl)
+            .apply(RequestOptions().centerInside())
+            .into(holder.itemView.imageviewFoto)
 
-            Glide.with(context)
-                .load(url)
-                .apply(RequestOptions().centerInside())
-                .into(holder.itemView.imageviewFoto)
-
-            holder.itemView.tv_name.text = entrie.items[0].name
-        }
-
-        holder.itemView.tv_value.text = entrie.finalPrice.toString()
+        holder.itemView.tv_name.text = itemShop.title
+        holder.itemView.tv_value.text = itemShop.value.toString()
     }
 
     override fun getItemCount(): Int {

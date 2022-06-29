@@ -54,20 +54,15 @@ class HomeFragment : Fragment() {
     private fun registerObservers() {
         val nick = AppPreferences(requireContext()).getString("nick", null)
         homeViewModel.getStats(nick ?: "")
-        homeViewModel.statsDto.observe(viewLifecycleOwner) {
+        homeViewModel.stats.observe(viewLifecycleOwner) {
             binding.progressBar.progress.isVisible = false
 
-            if (it.battlePass != null) {
-                binding.flBattlePass.isVisible = true
-                binding.tvBattlePass.text = it.battlePass?.level
-            }
-
-            binding.tvName.text = it.account?.name
-            binding.tvWins.text =
-                it.stats?.all?.overall?.wins?.toInt().toString()
-            binding.tvKd.text = it.stats?.all?.overall?.kd.toString()
-            binding.tvKills.text =
-                it.stats?.all?.overall?.kills?.toInt().toString()
+            binding.flBattlePass.isVisible = true
+            binding.tvBattlePass.text = it.level.toString()
+            binding.tvName.text = it.name
+            binding.tvWins.text = it.wins.toString()
+            binding.tvKd.text = it.kd.toString()
+            binding.tvKills.text = it.kills?.toInt().toString()
 
             activity?.let { _ ->
                 binding.viewpager.let { viewPager ->

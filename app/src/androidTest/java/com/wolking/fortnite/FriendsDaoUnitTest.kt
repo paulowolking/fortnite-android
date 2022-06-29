@@ -3,9 +3,9 @@ package com.wolking.fortnite
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.wolking.fortnite.data.database.AppDatabase
-import com.wolking.fortnite.data.database.dao.friends.FriendDao
-import com.wolking.fortnite.data.database.models.friends.model.Friend
+import com.wolking.fortnite.data.friends.AppDatabase
+import com.wolking.fortnite.data.friends.dao.FriendDao
+import com.wolking.fortnite.data.friends.data_source.Friend
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -51,7 +51,7 @@ class FriendsDaoUnitTest {
 
         friendSearch?.nickName = nickNameUpdate
         if (friendSearch != null)
-            dao.updateFriend(friendSearch)
+            dao.update(friendSearch)
 
         friendSearch = dao.findByName(nickNameUpdate)
 

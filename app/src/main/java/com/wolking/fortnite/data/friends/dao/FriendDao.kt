@@ -1,7 +1,7 @@
-package com.wolking.fortnite.data.database.dao.friends
+package com.wolking.fortnite.data.friends.dao
 
 import androidx.room.*
-import com.wolking.fortnite.data.database.models.friends.model.Friend
+import com.wolking.fortnite.data.friends.data_source.Friend
 
 @Dao
 interface FriendDao {
@@ -24,7 +24,7 @@ interface FriendDao {
     fun insertAll(vararg friends: Friend)
 
     @Update
-    fun updateFriend(friend: Friend)
+    fun update(friend: Friend)
 
     @Delete
     fun delete(friend: Friend)

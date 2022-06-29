@@ -15,7 +15,8 @@ import com.wolking.fortnite.presentation.ui.friends.viewmodel.FriendsViewModel
 @Composable
 fun FriendsList(viewModel: FriendsViewModel) {
     val context = LocalContext.current
-    val uiState = viewModel.uiState
+    val uiState by viewModel.uiState.collectAsState()
+
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(

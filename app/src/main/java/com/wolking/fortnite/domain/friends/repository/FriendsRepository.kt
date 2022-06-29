@@ -1,6 +1,6 @@
 package com.wolking.fortnite.domain.friends.repository
 
-import com.wolking.fortnite.data.database.models.friends.model.Friend
+import com.wolking.fortnite.data.friends.data_source.Friend
 
 interface FriendsRepository {
     fun insert(friend: Friend): Boolean

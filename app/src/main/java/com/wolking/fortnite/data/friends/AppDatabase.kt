@@ -1,9 +1,9 @@
-package com.wolking.fortnite.data.database
+package com.wolking.fortnite.data.friends
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.wolking.fortnite.data.database.dao.friends.FriendDao
-import com.wolking.fortnite.data.database.models.friends.model.Friend
+import com.wolking.fortnite.data.friends.dao.FriendDao
+import com.wolking.fortnite.data.friends.data_source.Friend
 
 @Database(entities = [Friend::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

@@ -7,8 +7,8 @@ import androidx.multidex.BuildConfig
 import androidx.room.Room
 import com.wolking.fortnite.data.core.util.ApiInterceptor
 import com.google.gson.GsonBuilder
-import com.wolking.fortnite.data.database.AppDatabase
-import com.wolking.fortnite.data.database.models.friends.repository.FriendRepositoryImpl
+import com.wolking.fortnite.data.friends.AppDatabase
+import com.wolking.fortnite.data.friends.repository.FriendRepositoryImpl
 import com.wolking.fortnite.data.news.repository.NewsRepositoryImpl
 import com.wolking.fortnite.data.shop.repository.ShopRepositoryImpl
 import com.wolking.fortnite.data.stats.repository.StatsRepositoryImpl

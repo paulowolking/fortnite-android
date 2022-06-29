@@ -1,7 +1,7 @@
-package com.wolking.fortnite.data.database.models.friends.repository
+package com.wolking.fortnite.data.friends.repository
 
-import com.wolking.fortnite.data.database.AppDatabase
-import com.wolking.fortnite.data.database.models.friends.model.Friend
+import com.wolking.fortnite.data.friends.AppDatabase
+import com.wolking.fortnite.data.friends.data_source.Friend
 import com.wolking.fortnite.domain.friends.repository.FriendsRepository
 
 class FriendRepositoryImpl(
@@ -26,7 +26,7 @@ class FriendRepositoryImpl(
     }
 
     override fun edit(friend: Friend): Boolean {
-        appDatabase.friendDao().updateFriend(friend = friend)
+        appDatabase.friendDao().update(friend = friend)
         return true
     }
 }

@@ -44,7 +44,6 @@ class NewsFragment : Fragment() {
 
     private fun registerObservers() {
         newsViewModel.getNews()
-
         newsViewModel.news.observe(viewLifecycleOwner, Observer {
             (binding.rvNews.adapter as NewsAdapter)
                 .updateItemsList(it)

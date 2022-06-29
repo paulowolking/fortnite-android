@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import com.wolking.fortnite.data.news.data_source.MotdDto
+import com.wolking.fortnite.domain.news.model.Notice
 import kotlinx.android.synthetic.main.adapter_grid_item.view.imageviewFoto
 import kotlinx.android.synthetic.main.adapter_grid_item.view.tv_name
 import kotlinx.android.synthetic.main.adapter_news.view.*
@@ -16,18 +16,18 @@ import kotlinx.android.synthetic.main.adapter_news.view.*
 
 class NewsAdapter(
     private var context: Context,
-    private var motdsList: MutableList<MotdDto> = mutableListOf()
+    private var notices: MutableList<Notice> = mutableListOf()
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     constructor(
         context: Context
     ) : this(
-        context, mutableListOf<MotdDto>()
+        context, mutableListOf<Notice>()
     )
 
-    fun updateItemsList(items: List<MotdDto>) {
-        this.motdsList.clear()
-        this.motdsList.addAll(items)
+    fun updateItemsList(items: List<Notice>) {
+        this.notices.clear()
+        this.notices.addAll(items)
         notifyDataSetChanged()
     }
 
@@ -38,7 +38,7 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val motd = motdsList[position]
+        val motd = notices[position]
 
         Glide.with(context)
             .load(motd.image)
@@ -46,11 +46,11 @@ class NewsAdapter(
             .into(holder.itemView.imageviewFoto)
 
         holder.itemView.tv_name.text = motd.title
-        holder.itemView.tv_description.text = motd.body
+        holder.itemView.tv_description.text = motd.description
     }
 
     override fun getItemCount(): Int {
-        return motdsList.size
+        return notices.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

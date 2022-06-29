@@ -4,15 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.wolking.fortnite.R
 import com.wolking.fortnite.databinding.ActivityNickBinding
 import com.wolking.fortnite.presentation.cache.AppPreferences
-import com.wolking.fortnite.data.core.Resource
 import com.wolking.fortnite.presentation.ui.home.viewmodel.HomeViewModel
 import com.wolking.fortnite.utils.CountingIdlingResourceSingleton
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +38,7 @@ class NickActivity : AppCompatActivity() {
     private fun search(nick: String) {
         homeViewModel.getStats(nick)
 
-        homeViewModel.statsDto.observe(this) {
+        homeViewModel.stats.observe(this) {
             AppPreferences(this).setString("nick", binding.etNick.text.toString())
             goToMain()
         }

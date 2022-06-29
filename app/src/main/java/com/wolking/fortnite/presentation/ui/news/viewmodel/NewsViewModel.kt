@@ -1,12 +1,10 @@
 package com.wolking.fortnite.presentation.ui.news.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.wolking.fortnite.data.news.data_source.MotdDto
+import androidx.lifecycle.*
 import com.wolking.fortnite.domain.news.repository.NewsRepository
 import com.wolking.fortnite.data.core.Resource
+import com.wolking.fortnite.domain.news.model.Notice
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -16,7 +14,7 @@ class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
 
-    var news: MutableLiveData<List<MotdDto>> = MutableLiveData()
+    val news: MutableLiveData<List<Notice>> = MutableLiveData()
 
     private var _loading: MutableLiveData<Boolean> = MutableLiveData()
     val loading: LiveData<Boolean> get() = _loading
@@ -27,21 +25,20 @@ class NewsViewModel @Inject constructor(
     private val scope = CoroutineScope(Dispatchers.IO + Job())
 
     fun getNews() = scope.launch {
-        when (val response = newsRepository.getNews()) {
-            is Resource.Loading -> {
-                _loading.postValue(true)
-            }
-            is Resource.Success -> {
-                _loading.postValue(false)
-
-                response.data.data?.motds?.let { items ->
-                    news.postValue(items)
+        newsRepository.getNews().collect {
+            when (it) {
+                is Resource.Loading -> {
+                    _loading.postValue(true)
                 }
-            }
-            is Resource.Error -> {
-                _loading.postValue(false)
-                _error.postValue(true)
-                Log.e("Erro:", response.toString())
+                is Resource.Success -> {
+                    _loading.postValue(false)
+                    news.postValue(it.data)
+                }
+                is Resource.Error -> {
+                    _loading.postValue(false)
+                    _error.postValue(true)
+                    Log.e("Erro:", it.toString())
+                }
             }
         }
     }

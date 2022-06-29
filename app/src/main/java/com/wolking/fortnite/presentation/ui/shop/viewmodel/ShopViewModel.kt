@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wolking.fortnite.data.shop.data_source.EntriesDto
 import com.wolking.fortnite.domain.shop.repository.ShopRepository
 import com.wolking.fortnite.data.core.Resource
+import com.wolking.fortnite.domain.shop.model.Shop
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -22,37 +22,25 @@ class ShopViewModel @Inject constructor(
     private var _error: MutableLiveData<Boolean> = MutableLiveData(false)
     val error: LiveData<Boolean> get() = _error
 
-    var items: MutableLiveData<List<EntriesDto>> = MutableLiveData()
+    var items: MutableLiveData<List<Shop>> = MutableLiveData()
 
     private val scope = CoroutineScope(Dispatchers.IO + Job())
 
     fun getShop() = scope.launch {
-        when (val response = shopRepository.getShop()) {
-            is Resource.Loading -> {
-                _loading.postValue(true)
-            }
-            is Resource.Success -> {
-                _loading.postValue(false)
-
-                val entries: MutableList<EntriesDto> = mutableListOf()
-                val shop = response.data.data
-                shop?.featured?.entries?.let {
-                    entries.addAll(it)
+        shopRepository.getShop().collect {
+            when (it) {
+                is Resource.Loading -> {
+                    _loading.postValue(true)
                 }
-
-                shop?.daily?.entries?.let {
-                    entries.addAll(it)
+                is Resource.Success -> {
+                    _loading.postValue(false)
+                    items.postValue(it.data)
                 }
-
-                shop?.specialFeatured?.entries?.let {
-                    entries.addAll(it)
+                is Resource.Error -> {
+                    _loading.postValue(false)
+                    _error.postValue(true)
+                    Log.e("Erro:", it.toString())
                 }
-                items.postValue(entries)
-            }
-            is Resource.Error -> {
-                _loading.postValue(false)
-                _error.postValue(true)
-                Log.e("Erro:", response.toString())
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.wolking.fortnite.data.database.models.friends.model
+package com.wolking.fortnite.data.friends.data_source
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

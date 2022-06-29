@@ -8,8 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.wolking.fortnite.data.shop.data_source.EntriesDto
 import com.wolking.fortnite.databinding.FragmentShopBinding
+import com.wolking.fortnite.domain.shop.model.Shop
 import com.wolking.fortnite.presentation.ui.shop.viewmodel.ShopViewModel
 import com.wolking.fortnite.presentation.ui.shop.adapters.ItemAdapterListener
 import com.wolking.fortnite.presentation.ui.shop.adapters.ItemGridAdapter
@@ -58,7 +58,7 @@ class ShopFragment : Fragment(), ItemAdapterListener {
         }
     }
 
-    override fun itemSelected(entriesDto: EntriesDto) {
+    override fun itemSelected(itemShop: Shop) {
 
     }
 }

@@ -1,7 +1,7 @@
 package com.wolking.fortnite.presentation.ui.shop.adapters
 
-import com.wolking.fortnite.data.shop.data_source.EntriesDto
+import com.wolking.fortnite.domain.shop.model.Shop
 
 interface ItemAdapterListener {
-    fun itemSelected(entriesDto: EntriesDto)
+    fun itemSelected(itemShop: Shop)
 }
