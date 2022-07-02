@@ -23,7 +23,7 @@ class DateTypeAdapter : JsonDeserializer<Date>, JsonSerializer<Date> {
     ): Date {
         for (format in DATE_FORMATS) {
             try {
-                return SimpleDateFormat(format, Locale.getDefault()).parse(jsonElement.asString)
+                return SimpleDateFormat(format, Locale.getDefault()).parse(jsonElement.asString) as Date
             } catch (e: ParseException) {
             }
         }

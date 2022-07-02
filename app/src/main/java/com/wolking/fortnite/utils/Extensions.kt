@@ -1,31 +1,9 @@
 package com.wolking.fortnite.utils
 
-import android.app.Activity
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.wolking.fortnite.R
-import io.reactivex.ObservableTransformer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-
-fun <T> applyObservableAsync(): ObservableTransformer<T, T> {
-    return ObservableTransformer { observable ->
-        observable
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-}
-
-fun Activity.resourceByName(name: String, defType: String): Int {
-    return this.resources.getIdentifier(name, defType, this.packageName)
-}
-
-fun Fragment.resourceByName(name: String, defType: String): Int {
-    return this.activity?.resourceByName(name, defType) ?: 0
-}
-
 
 fun ImageView.load(url: String?, circleCrop: Boolean = false, errorImage: Int? = null) {
     val requestOptions = RequestOptions()

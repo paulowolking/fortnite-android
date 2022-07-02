@@ -17,11 +17,12 @@ https://play.google.com/store/apps/details?id=com.wolking.fortnite
 ♻️ Refatoração da arquitetura<br/>
 ♻️ Testes instrumentados<br/>
 ♻️ Corrotinas ```https://developer.android.com/kotlin/coroutines```<br/>
+♻️ Compose para "Amigos" ```https://developer.android.com/jetpack/compose```<br/>
 
 ## Melhorias futuras
-✅ Colocar as visualizações em compose ```https://developer.android.com/jetpack/compose```<br/>
+✅ Colocar todas as visualizações em compose ```https://developer.android.com/jetpack/compose```<br/>
 ✅ Implementar testes unitários<br/>
-✔️ Talvez colocar uma camada de ```usecases``` para ser utilizado pelo ```repository```, para com isso ficar melhor de implementar os testes unitários.<br/>
+✅ Adicionar uma camada de ```usecases```.<br/>
 
 ## Imagens do aplicativo
 

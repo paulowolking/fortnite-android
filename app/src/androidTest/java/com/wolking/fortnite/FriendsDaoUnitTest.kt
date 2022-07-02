@@ -44,7 +44,7 @@ class FriendsDaoUnitTest {
     fun updateFriend() {
         val nickNameUpdate = "update"
         val nickNameTest = "_wolking"
-        val newFriend = Friend(nickName = "nickNameTest", name = "Paulo", nickPhoto = "")
+        val newFriend = Friend(nickName = nickNameTest, name = "Paulo", nickPhoto = "")
 
         dao.insert(friend = newFriend)
         var friendSearch = dao.findByName(nickNameTest)
