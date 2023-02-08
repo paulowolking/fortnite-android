@@ -13,7 +13,6 @@ import com.wolking.fortnite.domain.news.repository.NewsRepository
 import com.wolking.fortnite.domain.shop.repository.ShopRepository
 import com.wolking.fortnite.domain.stats.repository.StatsRepository
 import com.wolking.fortnite.utils.MockResponseFileReader
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
